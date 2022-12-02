@@ -52,6 +52,15 @@ def create_student(conn, student):
     except Error as e:
         print(e)
 
+def delete_student(conn, id):
+    sql = ''' DELETE FROM student WHERE id=?'''
+    try:
+        cursor = conn.cursor()
+        cursor.execute(sql, (id,))
+        conn.commit()
+    except Error as e:
+        print(e)
+
 
 
 database = r'group_24.db'
@@ -75,3 +84,4 @@ if connektion is not None:
     rekud_students(connektion)
     update_students_mark_is_married(connektion,4,100,False)
     rekud_students(connektion)
+    delete_student(connektion,4)
